@@ -45,8 +45,6 @@ export function FileConverter() {
   const [mode, setMode] = useState<AppMode>("convert");
   const [jobs, setJobs] = useState<FileJob[]>([]);
   const [target, setTarget] = useState<OutputTarget>("image/webp");
-  const [maxSizeMB, setMaxSizeMB] = useState(0.35);
-  const [maxSide, setMaxSide] = useState(2048);
   const [busy, setBusy] = useState(false);
   const jobsRef = useRef<FileJob[]>([]);
 
@@ -56,9 +54,7 @@ export function FileConverter() {
 
   const doneJobs = useMemo(
     () =>
-      jobs.filter(
-        (j) => j.status === "done" && j.resultBlob && j.resultName,
-      ),
+      jobs.filter((j) => j.status === "done" && j.resultBlob && j.resultName),
     [jobs],
   );
 
@@ -81,9 +77,7 @@ export function FileConverter() {
     const queue = jobsRef.current.filter((j) => j.status !== "done");
     for (const job of queue) {
       setJobs((prev) =>
-        prev.map((j) =>
-          j.id === job.id ? { ...j, status: "processing" } : j,
-        ),
+        prev.map((j) => (j.id === job.id ? { ...j, status: "processing" } : j)),
       );
       try {
         const { blob, filename } = await convertOneFile(job.file, target);
@@ -120,17 +114,10 @@ export function FileConverter() {
     const queue = jobsRef.current.filter((j) => j.status !== "done");
     for (const job of queue) {
       setJobs((prev) =>
-        prev.map((j) =>
-          j.id === job.id ? { ...j, status: "processing" } : j,
-        ),
+        prev.map((j) => (j.id === job.id ? { ...j, status: "processing" } : j)),
       );
       try {
-        const compressed = await compressImageFile(job.file, {
-          maxSizeMB,
-          maxWidthOrHeight: maxSide,
-          initialQuality: 0.62,
-          maxIteration: 22,
-        });
+        const compressed = await compressImageFile(job.file);
         setJobs((prev) =>
           prev.map((j) =>
             j.id === job.id
@@ -157,7 +144,7 @@ export function FileConverter() {
       }
     }
     setBusy(false);
-  }, [maxSide, maxSizeMB]);
+  }, []);
 
   const downloadOne = useCallback((job: FileJob) => {
     if (!job.resultBlob || !job.resultName) return;
@@ -241,7 +228,7 @@ export function FileConverter() {
             <select
               value={target}
               onChange={(e) => setTarget(e.target.value as OutputTarget)}
-              className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 shadow-inner outline-none ring-teal-500/30 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
+              className="cursor-pointer rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 shadow-inner outline-none ring-teal-500/30 focus:ring-2 disabled:cursor-not-allowed dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
               disabled={busy}
             >
               {OUTPUT_OPTIONS.map((value) => (
@@ -258,36 +245,13 @@ export function FileConverter() {
           </p>
         </div>
       ) : (
-        <div className="grid gap-4 rounded-2xl border border-zinc-200/80 bg-white/80 p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950/50 sm:grid-cols-2">
-          <label className="flex flex-col gap-2 text-sm font-medium text-zinc-800 dark:text-zinc-100">
-            Objetivo tamaño máx. (MB)
-            <input
-              type="number"
-              min={0.05}
-              max={20}
-              step={0.1}
-              value={maxSizeMB}
-              onChange={(e) => setMaxSizeMB(Number(e.target.value))}
-              disabled={busy}
-              className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 outline-none ring-teal-500/30 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
-            />
-          </label>
-          <label className="flex flex-col gap-2 text-sm font-medium text-zinc-800 dark:text-zinc-100">
-            Lado máximo (px)
-            <input
-              type="number"
-              min={320}
-              max={8192}
-              step={10}
-              value={maxSide}
-              onChange={(e) => setMaxSide(Number(e.target.value))}
-              disabled={busy}
-              className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 outline-none ring-teal-500/30 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50"
-            />
-          </label>
-          <p className="sm:col-span-2 text-xs text-zinc-500 dark:text-zinc-400">
-            Valores más bajos en MB y en lado máximo suelen reducir mucho más el
-            archivo. Por defecto ya es bastante agresivo.
+        <div className="rounded-2xl border border-zinc-200/80 bg-white/80 p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950/50">
+          <p className="text-sm text-zinc-700 dark:text-zinc-200">
+            Sube uno o varios <strong className="font-medium">PNG</strong> o{" "}
+            <strong className="font-medium">JPG</strong> y pulsa procesar: se
+            comprimen solos,{" "}
+            <strong className="font-medium">sin cambiar píxeles</strong> (mismo
+            ancho y alto que el original).
           </p>
         </div>
       )}

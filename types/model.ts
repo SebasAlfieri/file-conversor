@@ -14,10 +14,3 @@ export type FileJob = {
   resultBlob?: Blob;
   resultName?: string;
 };
-
-export type CompressionPreset = {
-  maxSizeMB: number;
-  maxWidthOrHeight: number;
-  initialQuality?: number;
-  maxIteration?: number;
-};
