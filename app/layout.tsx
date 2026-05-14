@@ -12,29 +12,72 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://tu-dominio.com"; // 👈 cambia esto
+const BASE_URL = "https://file-conversor-mu.vercel.app/"; // 👈 cambia esto
 
 export const metadata: Metadata = {
-  // ── Básico ──────────────────────────────────────────────
   metadataBase: new URL(BASE_URL),
   title: {
     default: "Conversor de Imágenes Online | PNG, JPG, WebP, SVG a PDF",
-    template: "%s | Conversor de Imágenes",
+    template: "Conversor de Imágenes",
   },
   description:
     "Convierte PNG, JPG, WebP, SVG y más a PDF u otros formatos, comprime imágenes y descarga todo en tu navegador, sin coste ni subidas a servidor.",
   keywords: [
     "conversor de imágenes",
+    "convertir imágenes online",
+    "convertidor de imágenes gratis",
     "convertir PNG a PDF",
     "convertir JPG a PDF",
+    "convertir JPEG a PDF",
+    "convertir WebP a PDF",
+    "convertir SVG a PDF",
+    "convertir imagen a PDF",
+    "convertir foto a PDF",
+    "JPG a PNG",
+    "PNG a JPG",
+    "PNG a WebP",
+    "WebP a PNG",
+    "JPG a WebP",
+    "WebP a JPG",
+    "JPEG a PNG",
+    "PNG a JPEG",
+    "SVG a PNG",
+    "SVG a JPG",
+    "convertidor JPG",
+    "convertidor PNG",
+    "convertidor WebP",
+    "convertidor SVG",
+    "compresor de imágenes",
     "comprimir imágenes",
-    "WebP a PDF",
-    "SVG a PDF",
-    "convertir imágenes online gratis",
+    "comprimir JPG",
+    "comprimir PNG",
+    "comprimir WebP",
+    "reducir tamaño de imagen",
+    "optimizar imágenes",
+    "optimizar PNG",
+    "optimizar JPG",
+    "optimizar WebP",
+    "herramienta de imágenes online",
+    "editor de imágenes online",
+    "convertir archivos de imagen",
+    "convertidor de fotos",
+    "convertir imágenes sin perder calidad",
+    "convertir imágenes rápido",
+    "convertidor online gratis",
+    "image converter",
+    "png converter",
+    "jpg converter",
+    "webp converter",
+    "image compressor",
+    "png to jpg",
+    "jpg to png",
+    "jpg to webp",
+    "webp to png",
+    "image to pdf",
   ],
-  authors: [{ name: "Tu Nombre o Empresa", url: BASE_URL }],
-  creator: "Tu Nombre o Empresa",
-  publisher: "Tu Nombre o Empresa",
+  authors: [{ name: "Sebastian Alfieri", url: BASE_URL }],
+  creator: "Sebastian Alfieri",
+  publisher: "Sebastian Alfieri",
 
   // ── Indexación ───────────────────────────────────────────
   robots: {
@@ -49,10 +92,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: BASE_URL,
-    languages: {
-      "es-AR": `${BASE_URL}/ar`,
-      "es-ES": `${BASE_URL}/es`,
-    },
   },
 
   // ── Open Graph (Facebook, LinkedIn, WhatsApp…) ───────────
@@ -66,7 +105,7 @@ export const metadata: Metadata = {
       "Convierte y comprime imágenes gratis en tu navegador. Sin subidas a servidor, sin coste.",
     images: [
       {
-        url: "/og-image.png", // 1200×630 px recomendado
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Conversor de Imágenes Online",
@@ -81,7 +120,7 @@ export const metadata: Metadata = {
     description:
       "Convierte y comprime imágenes gratis en tu navegador. Sin subidas a servidor, sin coste.",
     images: ["/og-image.png"],
-    // creator: "@tuUsuario",  // descomenta si tienes cuenta
+    creator: "Sebastian Alfieri",
   },
 
   // ── PWA / íconos ─────────────────────────────────────────
