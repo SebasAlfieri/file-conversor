@@ -23,6 +23,7 @@
 - Preferir server components
 - Mantener imports absolutos con @/
 - No crear archivos >300 líneas en lo posible
+- usa yarn add en caso de instalar librerias, no npm
 
 ## TypeScript
 
