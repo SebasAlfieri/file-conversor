@@ -1,4 +1,6 @@
-export type AppMode = "convert" | "compress";
+export type AppMode = "convert" | "compress" | "youtube";
+
+export type ImageMode = "convert" | "compress";
 
 export type RasterMime = "image/png" | "image/jpeg" | "image/webp";
 
@@ -14,3 +16,5 @@ export type FileJob = {
   resultBlob?: Blob;
   resultName?: string;
 };
+
+export type YoutubeDownloadFormat = "mp3" | "mp4";

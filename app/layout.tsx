@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Decentes · Convertidor de imágenes",
+  title: "Decentes · Convertidor de imágenes y YouTube",
   description:
-    "Convierte PNG, JPG, WebP, SVG y más a PDF u otros formatos, comprime imágenes y descarga todo en tu navegador, sin coste ni subidas a servidor.",
+    "Convierte y comprime imágenes en el navegador. Descarga MP3 o MP4 desde enlaces de YouTube (proceso en servidor). Sin coste para uso personal.",
 };
 
 export default function RootLayout({
