@@ -13,11 +13,7 @@ export async function imageFileToPdf(file: File): Promise<Blob> {
   } catch {
     const drawable = await loadDrawableSource(file);
     try {
-      const jpegBlob = await drawableToRasterBlob(
-        drawable,
-        "image/jpeg",
-        0.76,
-      );
+      const jpegBlob = await drawableToRasterBlob(drawable, "image/jpeg", 0.76);
       jpgBytes = new Uint8Array(await jpegBlob.arrayBuffer());
     } finally {
       releaseSource(drawable);
@@ -35,5 +31,8 @@ export async function imageFileToPdf(file: File): Promise<Blob> {
   });
 
   const pdfBytes = await pdfDoc.save();
-  return new Blob([pdfBytes], { type: "application/pdf" });
+
+  return new Blob([pdfBytes.buffer as ArrayBuffer], {
+    type: "application/pdf",
+  });
 }
