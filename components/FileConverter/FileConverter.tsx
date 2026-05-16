@@ -42,7 +42,7 @@ function makeJobs(files: File[]): FileJob[] {
 }
 
 export function FileConverter() {
-  const [mode, setMode] = useState<AppMode>("convert");
+  const [mode, setMode] = useState<AppMode>("compress");
   const [jobs, setJobs] = useState<FileJob[]>([]);
   const [target, setTarget] = useState<OutputTarget>("image/webp");
   const [busy, setBusy] = useState(false);
@@ -188,22 +188,6 @@ export function FileConverter() {
         <button
           type="button"
           role="tab"
-          aria-selected={mode === "convert"}
-          className={`flex-1 rounded-xl px-4 py-2 text-sm font-medium transition ${
-            mode === "convert"
-              ? "bg-teal-600 text-white shadow-sm"
-              : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
-          }`}
-          onClick={() => {
-            setMode("convert");
-            setJobs([]);
-          }}
-        >
-          Convertir formato
-        </button>
-        <button
-          type="button"
-          role="tab"
           aria-selected={mode === "compress"}
           className={`flex-1 rounded-xl px-4 py-2 text-sm font-medium transition ${
             mode === "compress"
@@ -216,6 +200,22 @@ export function FileConverter() {
           }}
         >
           Comprimir PNG / JPG
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mode === "convert"}
+          className={`flex-1 rounded-xl px-4 py-2 text-sm font-medium transition ${
+            mode === "convert"
+              ? "bg-teal-600 text-white shadow-sm"
+              : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
+          }`}
+          onClick={() => {
+            setMode("convert");
+            setJobs([]);
+          }}
+        >
+          Convertir formato
         </button>
       </div>
 
