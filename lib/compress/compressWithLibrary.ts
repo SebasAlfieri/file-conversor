@@ -1,6 +1,10 @@
 import imageCompression from "browser-image-compression";
 
-import { getSourceSize, loadDrawableSource, releaseSource } from "@/lib/image/loadImageSource";
+import {
+  getSourceSize,
+  loadDrawableSource,
+  releaseSource,
+} from "@/lib/image/loadImageSource";
 
 const PNG_JPEG = new Set(["image/png", "image/jpeg", "image/jpg"]);
 
@@ -28,7 +32,10 @@ export function isCompressibleImage(file: File): boolean {
 /**
  * Comprime PNG/JPG de forma automática, sin redimensionar (misma resolución en px).
  */
-export async function compressImageFile(file: File): Promise<File> {
+export async function compressImageFile(
+  file: File,
+  onProgress?: (progress: number) => void,
+): Promise<File> {
   const mime = normalizeMime(file);
   if (!PNG_JPEG.has(mime) && !isCompressibleImage(file)) {
     throw new Error("Solo se comprimen archivos PNG o JPG.");
@@ -38,8 +45,14 @@ export async function compressImageFile(file: File): Promise<File> {
   const asPng = mime === "image/png" || name.endsWith(".png");
   const inputMb = file.size / (1024 * 1024);
   const maxSide = await readMaxSide(file);
+  onProgress?.(8);
 
-  const run = (sizeFactor: number, initialQuality: number) =>
+  const run = (
+    sizeFactor: number,
+    initialQuality: number,
+    progressStart: number,
+    progressEnd: number,
+  ) =>
     imageCompression(file, {
       maxSizeMB: Math.max(0.006, inputMb * sizeFactor),
       maxWidthOrHeight: maxSide,
@@ -48,17 +61,22 @@ export async function compressImageFile(file: File): Promise<File> {
       maxIteration: 22,
       alwaysKeepResolution: true,
       fileType: asPng ? "image/png" : "image/jpeg",
+      onProgress: (progress) => {
+        const span = progressEnd - progressStart;
+        onProgress?.(Math.round(progressStart + (progress / 100) * span));
+      },
     });
 
-  let out = await run(0.4, 0.72);
+  let out = await run(0.4, 0.72, 8, 72);
 
   if (out.size >= file.size * 0.92 && !asPng) {
-    out = await run(0.26, 0.6);
+    out = await run(0.26, 0.6, 72, 95);
   }
 
   if (out.size >= file.size * 0.94 && asPng) {
-    out = await run(0.3, 0.64);
+    out = await run(0.3, 0.64, 72, 95);
   }
 
+  onProgress?.(100);
   return out;
 }

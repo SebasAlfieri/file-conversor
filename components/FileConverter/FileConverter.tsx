@@ -4,8 +4,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { DropZone } from "@/components/DropZone/DropZone";
-import { OUTPUT_LABELS } from "@/lib/constants";
+import {
+  ACCEPT_IMAGE_AND_SVG,
+  ACCEPT_PDF,
+  OUTPUT_LABELS,
+} from "@/lib/constants";
 import { compressImageFile } from "@/lib/compress/compressWithLibrary";
+import { compressPdfFile } from "@/lib/compress/compressPdf";
 import { convertOneFile } from "@/lib/convert/convertOneFile";
 import { triggerDownload } from "@/lib/download/triggerDownload";
 import { zipNamedBlobs } from "@/lib/zip/zipResults";
@@ -17,6 +22,48 @@ const OUTPUT_OPTIONS: OutputTarget[] = [
   "image/webp",
   "application/pdf",
 ];
+
+type ProcessResult = {
+  blob: Blob;
+  filename: string;
+};
+
+type ProgressCallback = (progress: number) => void;
+
+function clampProgress(progress: number): number {
+  return Math.max(0, Math.min(100, Math.round(progress)));
+}
+
+function ProgressBar({
+  value,
+  label,
+}: {
+  value: number;
+  label: string;
+}) {
+  const progress = clampProgress(value);
+
+  return (
+    <div className="space-y-1" aria-label={label}>
+      <div className="flex items-center justify-between gap-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+        <span>{label}</span>
+        <span>{progress}%</span>
+      </div>
+      <div
+        className="h-2 overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800"
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={progress}
+      >
+        <div
+          className="h-full rounded-full bg-teal-500 transition-[width] duration-300 ease-out"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+    </div>
+  );
+}
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -38,6 +85,7 @@ function makeJobs(files: File[]): FileJob[] {
     id: crypto.randomUUID(),
     file,
     status: "pending" as const,
+    progress: 0,
   }));
 }
 
@@ -58,6 +106,12 @@ export function FileConverter() {
     [jobs],
   );
 
+  const totalProgress = useMemo(() => {
+    if (!jobs.length) return 0;
+    const sum = jobs.reduce((acc, job) => acc + job.progress, 0);
+    return Math.round(sum / jobs.length);
+  }, [jobs]);
+
   const addFiles = useCallback((incoming: FileList | File[]) => {
     const list = Array.from(incoming).filter((f) => f.size > 0);
     if (!list.length) return;
@@ -72,79 +126,113 @@ export function FileConverter() {
     setJobs((prev) => prev.filter((j) => j.id !== id));
   }, []);
 
-  const runConvert = useCallback(async () => {
-    setBusy(true);
-    const queue = jobsRef.current.filter((j) => j.status !== "done");
-    for (const job of queue) {
+  const processPendingJobs = useCallback(
+    async (
+      processFile: (
+        file: File,
+        onProgress: ProgressCallback,
+      ) => Promise<ProcessResult>,
+    ) => {
+      setBusy(true);
+      const queue = jobsRef.current.filter((j) => j.status !== "done");
+      const queueIds = new Set(queue.map((job) => job.id));
       setJobs((prev) =>
-        prev.map((j) => (j.id === job.id ? { ...j, status: "processing" } : j)),
+        prev.map((job) =>
+          queueIds.has(job.id)
+            ? {
+                ...job,
+                progress: 0,
+                errorMessage: undefined,
+                resultBlob: undefined,
+                resultName: undefined,
+              }
+            : job,
+        ),
       );
-      try {
-        const { blob, filename } = await convertOneFile(job.file, target);
+
+      for (const job of queue) {
+        const updateProgress = (progress: number) => {
+          const nextProgress = clampProgress(progress);
+          setJobs((prev) =>
+            prev.map((j) =>
+              j.id === job.id ? { ...j, progress: nextProgress } : j,
+            ),
+          );
+        };
+
         setJobs((prev) =>
           prev.map((j) =>
             j.id === job.id
-              ? {
-                  ...j,
-                  status: "done",
-                  resultBlob: blob,
-                  resultName: filename,
-                  errorMessage: undefined,
-                }
+              ? { ...j, status: "processing", progress: 1 }
               : j,
           ),
         );
-      } catch (error) {
-        const message =
-          error instanceof Error ? error.message : "Error desconocido";
-        setJobs((prev) =>
-          prev.map((j) =>
-            j.id === job.id
-              ? { ...j, status: "error", errorMessage: message }
-              : j,
-          ),
-        );
+        try {
+          const { blob, filename } = await processFile(job.file, updateProgress);
+          setJobs((prev) =>
+            prev.map((j) =>
+              j.id === job.id
+                ? {
+                    ...j,
+                    status: "done",
+                    resultBlob: blob,
+                    resultName: filename,
+                    progress: 100,
+                    errorMessage: undefined,
+                  }
+                : j,
+            ),
+          );
+        } catch (error) {
+          const message =
+            error instanceof Error ? error.message : "Error desconocido";
+          setJobs((prev) =>
+            prev.map((j) =>
+              j.id === job.id
+                ? {
+                    ...j,
+                    status: "error",
+                    progress: 100,
+                    errorMessage: message,
+                  }
+                : j,
+            ),
+          );
+        }
       }
-    }
-    setBusy(false);
-  }, [target]);
+      setBusy(false);
+    },
+    [],
+  );
+
+  const runConvert = useCallback(async () => {
+    await processPendingJobs(async (file, onProgress) => {
+      onProgress(10);
+      const result = await convertOneFile(file, target);
+      onProgress(95);
+      return result;
+    });
+  }, [processPendingJobs, target]);
 
   const runCompress = useCallback(async () => {
-    setBusy(true);
-    const queue = jobsRef.current.filter((j) => j.status !== "done");
-    for (const job of queue) {
-      setJobs((prev) =>
-        prev.map((j) => (j.id === job.id ? { ...j, status: "processing" } : j)),
-      );
-      try {
-        const compressed = await compressImageFile(job.file);
-        setJobs((prev) =>
-          prev.map((j) =>
-            j.id === job.id
-              ? {
-                  ...j,
-                  status: "done",
-                  resultBlob: compressed,
-                  resultName: `comprimido-${compressed.name}`,
-                  errorMessage: undefined,
-                }
-              : j,
-          ),
-        );
-      } catch (error) {
-        const message =
-          error instanceof Error ? error.message : "Error desconocido";
-        setJobs((prev) =>
-          prev.map((j) =>
-            j.id === job.id
-              ? { ...j, status: "error", errorMessage: message }
-              : j,
-          ),
-        );
-      }
-    }
-    setBusy(false);
-  }, []);
+    await processPendingJobs(async (file, onProgress) => {
+      const compressed = await compressImageFile(file, onProgress);
+      return {
+        blob: compressed,
+        filename: `comprimido-${compressed.name}`,
+      };
+    });
+  }, [processPendingJobs]);
+
+  const runCompressPdf = useCallback(async () => {
+    await processPendingJobs(async (file, onProgress) => {
+      const compressed = await compressPdfFile(file, onProgress);
+      return {
+        blob: compressed,
+        filename: `comprimido-${compressed.name}`,
+      };
+    });
+  }, [processPendingJobs]);
 
   const downloadOne = useCallback((job: FileJob) => {
     if (!job.resultBlob || !job.resultName) return;
@@ -217,9 +305,35 @@ export function FileConverter() {
         >
           Convertir formato
         </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mode === "compressPdf"}
+          className={`flex-1 rounded-xl px-4 py-2 text-sm font-medium transition ${
+            mode === "compressPdf"
+              ? "bg-teal-600 text-white shadow-sm"
+              : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
+          }`}
+          onClick={() => {
+            setMode("compressPdf");
+            setJobs([]);
+          }}
+        >
+          Comprimir PDF
+        </button>
       </div>
 
-      <DropZone onFiles={addFiles} disabled={busy} />
+      <DropZone
+        onFiles={addFiles}
+        disabled={busy}
+        accept={mode === "compressPdf" ? ACCEPT_PDF : ACCEPT_IMAGE_AND_SVG}
+        title={
+          mode === "compressPdf"
+            ? "Arrastra PDF aquí"
+            : "Arrastra imágenes aquí"
+        }
+        description="o toca para elegir archivos en tu explorador (varios a la vez)"
+      />
 
       {mode === "convert" ? (
         <div className="rounded-2xl border border-zinc-200/80 bg-white/80 p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950/50">
@@ -244,7 +358,7 @@ export function FileConverter() {
             documento.
           </p>
         </div>
-      ) : (
+      ) : mode === "compress" ? (
         <div className="rounded-2xl border border-zinc-200/80 bg-white/80 p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950/50">
           <p className="text-sm text-zinc-700 dark:text-zinc-200">
             Sube uno o varios <strong className="font-medium">PNG</strong> o{" "}
@@ -254,17 +368,33 @@ export function FileConverter() {
             ancho y alto que el original).
           </p>
         </div>
+      ) : (
+        <div className="rounded-2xl border border-zinc-200/80 bg-white/80 p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950/50">
+          <p className="text-sm text-zinc-700 dark:text-zinc-200">
+            Sube uno o varios <strong className="font-medium">PDF</strong> y
+            pulsa procesar: se optimizan en tu navegador para intentar reducir
+            el peso del archivo sin subirlo a ningún servidor.
+          </p>
+        </div>
       )}
 
       <div className="flex flex-wrap items-center gap-3">
         <button
           type="button"
           className="inline-flex items-center justify-center rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-500 disabled:cursor-not-allowed disabled:opacity-60"
-          onClick={mode === "convert" ? runConvert : runCompress}
+          onClick={
+            mode === "convert"
+              ? runConvert
+              : mode === "compressPdf"
+                ? runCompressPdf
+                : runCompress
+          }
           disabled={busy || jobs.length === 0}
           aria-label={
             mode === "convert"
               ? "Procesar conversión de archivos"
+              : mode === "compressPdf"
+                ? "Procesar compresión de PDF"
               : "Procesar compresión de archivos"
           }
         >
@@ -291,6 +421,12 @@ export function FileConverter() {
           </button>
         ) : null}
       </div>
+
+      {jobs.length > 0 ? (
+        <div className="rounded-2xl border border-zinc-200/80 bg-white/80 p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-950/50">
+          <ProgressBar value={totalProgress} label="Progreso total" />
+        </div>
+      ) : null}
 
       <AnimatePresence initial={false}>
         {jobs.length > 0 ? (
@@ -325,6 +461,7 @@ export function FileConverter() {
                     )}
                     {job.errorMessage ? ` · ${job.errorMessage}` : null}
                   </p>
+                  <ProgressBar value={job.progress} label="Progreso" />
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {job.status === "done" && job.resultBlob && job.resultName ? (
