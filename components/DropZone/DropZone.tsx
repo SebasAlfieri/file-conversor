@@ -8,9 +8,18 @@ import { ACCEPT_IMAGE_AND_SVG } from "@/lib/constants";
 type DropZoneProps = {
   onFiles: (files: FileList | File[]) => void;
   disabled?: boolean;
+  accept?: string;
+  title?: string;
+  description?: string;
 };
 
-export function DropZone({ onFiles, disabled }: DropZoneProps) {
+export function DropZone({
+  onFiles,
+  disabled,
+  accept = ACCEPT_IMAGE_AND_SVG,
+  title = "Arrastra imágenes aquí",
+  description = "o toca para elegirlas en tu explorador (varias a la vez)",
+}: DropZoneProps) {
   const [dragActive, setDragActive] = useState(false);
 
   const handleDragOver = useCallback((event: DragEvent) => {
@@ -58,7 +67,7 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
         id="file-input"
         type="file"
         multiple
-        accept={ACCEPT_IMAGE_AND_SVG}
+        accept={accept}
         className="absolute inset-0 z-10 cursor-pointer opacity-0 disabled:cursor-not-allowed"
         disabled={disabled}
         onChange={(event) => {
@@ -91,10 +100,10 @@ export function DropZone({ onFiles, disabled }: DropZoneProps) {
         </div>
         <div>
           <p className="text-base font-medium text-zinc-900 dark:text-zinc-100">
-            Arrastra imágenes aquí
+            {title}
           </p>
           <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-            o toca para elegirlas en tu explorador (varias a la vez)
+            {description}
           </p>
         </div>
       </div>

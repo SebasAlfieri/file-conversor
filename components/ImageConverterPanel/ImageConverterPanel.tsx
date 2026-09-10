@@ -38,6 +38,7 @@ function makeJobs(files: File[]): FileJob[] {
     id: crypto.randomUUID(),
     file,
     status: "pending" as const,
+    progress: 0,
   }));
 }
 

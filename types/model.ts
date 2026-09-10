@@ -1,4 +1,4 @@
-export type AppMode = "convert" | "compress" | "youtube";
+export type AppMode = "convert" | "compress" | "compressPdf" | "youtube";
 
 export type ImageMode = "convert" | "compress";
 
@@ -12,6 +12,7 @@ export type FileJob = {
   id: string;
   file: File;
   status: JobStatus;
+  progress: number;
   errorMessage?: string;
   resultBlob?: Blob;
   resultName?: string;
