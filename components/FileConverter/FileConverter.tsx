@@ -83,7 +83,7 @@ export function FileConverter() {
           }`}
           onClick={() => setMode("youtube")}
         >
-          YouTube
+YouTube downloader
         </button>
       </div>
 

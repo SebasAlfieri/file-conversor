@@ -1,9 +1,21 @@
+import { createWriteStream } from "node:fs";
+import { mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { PassThrough, Readable } from "node:stream";
+import type { ReadableStream as NodeReadableStream } from "node:stream/web";
+import { pipeline } from "node:stream/promises";
 
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegPath from "ffmpeg-static";
 import type { NextRequest } from "next/server";
-import { Innertube, UniversalCache, type InnerTubeClient } from "youtubei.js";
+import {
+  ClientType,
+  Innertube,
+  Platform,
+  UniversalCache,
+  type Types,
+} from "youtubei.js";
 
 import { attachmentContentDisposition } from "@/lib/youtube/contentDisposition";
 import { extractYoutubeVideoId } from "@/lib/youtube/extractYoutubeVideoId";
@@ -12,6 +24,18 @@ import { sanitizeYoutubeFilename } from "@/lib/youtube/sanitizeFilename";
 export const runtime = "nodejs";
 
 export const maxDuration = 600;
+
+Platform.shim.eval = async (data) => {
+  return new Function(data.output)();
+};
+
+const SESSION_CLIENTS: Array<{
+  session: ClientType;
+  client: Types.InnerTubeClient;
+}> = [
+  { session: ClientType.IOS, client: "IOS" },
+  { session: ClientType.VISIONOS, client: "VISIONOS" },
+];
 
 type Body = {
   url?: string;
@@ -30,30 +54,13 @@ function titleFromBasicInfo(info: {
   return typeof t === "string" ? t : t.toString();
 }
 
-type InnertubeCreateOptions = NonNullable<Parameters<typeof Innertube.create>[0]>;
-
-function innerTubeClientFromConfig(
-  config: InnertubeCreateOptions,
-): InnerTubeClient | undefined {
-  return config.client_type;
+function requireFfmpeg(ffmpegPathValue: string | null) {
+  if (!ffmpegPathValue) {
+    return null;
+  }
+  ffmpeg.setFfmpegPath(ffmpegPathValue);
+  return true;
 }
-
-const SESSION_FALLBACKS: InnertubeCreateOptions[] = [
-  {
-    cache: new UniversalCache(true),
-    generate_session_locally: true,
-  },
-  {
-    cache: new UniversalCache(false),
-    generate_session_locally: true,
-    client_type: "TV_EMBEDDED",
-  },
-  {
-    cache: new UniversalCache(false),
-    generate_session_locally: true,
-    client_type: "ANDROID",
-  },
-];
 
 export async function POST(req: NextRequest) {
   let body: Body;
@@ -79,70 +86,121 @@ export async function POST(req: NextRequest) {
     return jsonError("No se pudo obtener el ID del video desde la URL.", 400);
   }
 
+  if (requireFfmpeg(ffmpegPath) === null) {
+    return jsonError(
+      "La conversión a MP3 no está disponible en este entorno (falta el binario de ffmpeg).",
+      503,
+    );
+  }
+
   let lastError: unknown;
 
-  for (const config of SESSION_FALLBACKS) {
+  for (const { session, client } of SESSION_CLIENTS) {
     try {
-      const yt = await Innertube.create(config);
-      const sessionClient = innerTubeClientFromConfig(config);
-      const basic = sessionClient
-        ? await yt.getBasicInfo(videoId, { client: sessionClient })
-        : await yt.getBasicInfo(videoId);
+      const yt = await Innertube.create({
+        cache: new UniversalCache(true),
+        generate_session_locally: true,
+        client_type: session,
+      });
+
+      const basic = await yt.getBasicInfo(videoId, { client });
       const title = sanitizeYoutubeFilename(titleFromBasicInfo(basic));
 
-      const clientOpt = sessionClient ? { client: sessionClient } : {};
-
-      if (format === "mp4") {
-        const bodyStream = await yt.download(videoId, {
-          type: "video+audio",
+      if (format === "mp3") {
+        const audioWeb = await yt.download(videoId, {
+          type: "audio",
           quality: "best",
           format: "mp4",
-          ...clientOpt,
+          client,
         });
 
-        return new Response(bodyStream, {
-          headers: {
-            "Content-Type": "video/mp4",
-            "Content-Disposition": attachmentContentDisposition(`${title}.mp4`),
+        const audioIn = Readable.fromWeb(
+          audioWeb as unknown as NodeReadableStream,
+        );
+        const out = new PassThrough();
+
+        ffmpeg(audioIn)
+          .audioCodec("libmp3lame")
+          .audioBitrate(192)
+          .format("mp3")
+          .on("error", (err: Error) => {
+            out.destroy(err);
+          })
+          .pipe(out, { end: true });
+
+        return new Response(
+          Readable.toWeb(out as Readable) as unknown as BodyInit,
+          {
+            headers: {
+              "Content-Type": "audio/mpeg",
+              "Content-Disposition": attachmentContentDisposition(
+                `${title}.mp3`,
+              ),
+            },
           },
-        });
-      }
-
-      if (!ffmpegPath) {
-        return jsonError(
-          "La conversión a MP3 no está disponible en este entorno (falta el binario de ffmpeg).",
-          503,
         );
       }
 
-      ffmpeg.setFfmpegPath(ffmpegPath);
+      const tmpDir = await mkdtemp(join(tmpdir(), "fc-yt-"));
+      const videoPath = join(tmpDir, "video.mp4");
+      const audioPath = join(tmpDir, "audio.m4a");
+      const cleanup = () => rm(tmpDir, { recursive: true, force: true });
 
-      const audioWeb = await yt.download(videoId, {
-        type: "audio",
-        quality: "best",
-        format: "mp4",
-        ...clientOpt,
-      });
+      try {
+        const [videoWeb, audioWeb] = await Promise.all([
+          yt.download(videoId, {
+            type: "video",
+            quality: "best",
+            format: "mp4",
+            client,
+          }),
+          yt.download(videoId, {
+            type: "audio",
+            quality: "best",
+            format: "mp4",
+            client,
+          }),
+        ]);
 
-      const audioIn = Readable.fromWeb(audioWeb);
+        await pipeline(
+          Readable.fromWeb(videoWeb as unknown as NodeReadableStream),
+          createWriteStream(videoPath),
+        );
+        await pipeline(
+          Readable.fromWeb(audioWeb as unknown as NodeReadableStream),
+          createWriteStream(audioPath),
+        );
+      } catch (err) {
+        await cleanup();
+        throw err;
+      }
 
       const out = new PassThrough();
+      out.on("close", () => {
+        void cleanup();
+      });
 
-      ffmpeg(audioIn)
-        .audioCodec("libmp3lame")
-        .audioBitrate(192)
-        .format("mp3")
+      ffmpeg()
+        .input(videoPath)
+        .input(audioPath)
+        .outputOptions(["-c copy", "-movflags frag_keyframe+empty_moov+faststart"])
+        .format("mp4")
         .on("error", (err: Error) => {
           out.destroy(err);
         })
         .pipe(out, { end: true });
 
-      return new Response(Readable.toWeb(out as Readable), {
-        headers: {
-          "Content-Type": "audio/mpeg",
-          "Content-Disposition": attachmentContentDisposition(`${title}.mp3`),
+      return new Response(
+        Readable.toWeb(out as Readable) as unknown as BodyInit,
+        {
+          headers: {
+            "Content-Type": "video/mp4",
+            "Content-Disposition": attachmentContentDisposition(
+              `${title}.mp4`,
+            ),
+          },
         },
-      });
+      );
     } catch (err) {
       lastError = err;
     }
