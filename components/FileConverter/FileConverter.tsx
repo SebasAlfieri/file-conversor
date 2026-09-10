@@ -255,7 +255,7 @@ export function FileConverter() {
   }, [doneJobs]);
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 py-12">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-8 py-12">
       <header className="space-y-3 text-center sm:text-left">
         <p className="text-sm font-medium uppercase tracking-widest text-teal-600 dark:text-teal-300">
           {mode === "youtube"
