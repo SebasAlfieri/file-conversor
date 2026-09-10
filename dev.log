@@ -1,0 +1,39 @@
+yarn run v1.22.22
+$ next dev
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.133:3000
+✓ Ready in 662ms
+
+ GET / 200 in 945ms (next.js: 554ms, application-code: 390ms)
+ GET / 200 in 953ms (next.js: 608ms, application-code: 344ms)
+ GET / 200 in 69ms (next.js: 7ms, application-code: 62ms)
+ GET / 200 in 64ms (next.js: 8ms, application-code: 57ms)
+ POST /api/video/probe 200 in 567ms (next.js: 125ms, application-code: 441ms)
+ POST /api/video/compress 200 in 74s (next.js: 182ms, application-code: 74s)
+✓ Compiled in 65ms
+ GET / 200 in 282ms (next.js: 158ms, application-code: 124ms)
+✓ Compiled in 128ms
+ GET / 500 in 491ms (next.js: 304ms, application-code: 187ms)
+ GET / 500 in 36ms (next.js: 23ms, application-code: 13ms)
+✓ Compiled in 49ms
+ GET / 200 in 422ms (next.js: 154ms, application-code: 268ms)
+✓ Compiled in 52ms
+ GET / 200 in 161ms (next.js: 122ms, application-code: 39ms)
+✓ Compiled in 38ms
+ GET / 200 in 162ms (next.js: 109ms, application-code: 53ms)
+✓ Compiled in 34ms
+ GET / 200 in 162ms (next.js: 114ms, application-code: 48ms)
+✓ Compiled in 44ms
+ GET / 200 in 167ms (next.js: 122ms, application-code: 45ms)
+✓ Compiled in 38ms
+ GET / 200 in 180ms (next.js: 129ms, application-code: 51ms)
+✓ Compiled in 37ms
+ GET / 200 in 160ms (next.js: 113ms, application-code: 47ms)
+ GET / 200 in 130ms (next.js: 72ms, application-code: 58ms)
+ GET / 200 in 127ms (next.js: 74ms, application-code: 53ms)
+ GET / 200 in 155ms (next.js: 110ms, application-code: 44ms)
+ POST /api/video/probe 200 in 216ms (next.js: 25ms, application-code: 192ms)
+ POST /api/video/compress 200 in 27.5s (next.js: 43ms, application-code: 27.5s)
+[?25h
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

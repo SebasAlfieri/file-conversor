@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { DropZone } from "@/components/DropZone/DropZone";
+import { VideoCompressor } from "@/components/VideoCompressor/VideoCompressor";
 import { YouTubeDownloader } from "@/components/YouTubeDownloader/YouTubeDownloader";
 import {
   ACCEPT_IMAGE_AND_SVG,
@@ -259,18 +260,28 @@ export function FileConverter() {
         <p className="text-sm font-medium uppercase tracking-widest text-teal-600 dark:text-teal-300">
           {mode === "youtube"
             ? "YouTube · Proceso en servidor"
-            : "Gratis · En tu navegador"}
+            : mode === "compressVideo"
+              ? "Gratis · Proceso en servidor"
+              : "Gratis · En tu navegador"}
         </p>
         <h1 className="text-balance text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
           {mode === "youtube"
             ? "Descarga audio o video desde un enlace de YouTube"
-            : "Convierte y comprime imágenes sin subirlas a ningún servidor"}
+            : mode === "compressVideo"
+              ? "Comprime videos manteniendo calidad y proporción"
+              : "Convierte y comprime imágenes sin subirlas a ningún servidor"}
         </h1>
         <p className="text-pretty text-zinc-600 dark:text-zinc-400">
           {mode === "youtube" ? (
             <>
               Elige MP3 (solo sonido) o MP4 (vídeo con audio). Respeta derechos
               de autor y los términos de YouTube.
+            </>
+          ) : mode === "compressVideo" ? (
+            <>
+              Sube tu video y detectamos resolución y propiedades: elige
+              calidad y el ancho horizontal —manteniendo siempre la proporción—
+              y mira cuánto pesará antes de comprimir.
             </>
           ) : (
             <>
@@ -339,6 +350,22 @@ export function FileConverter() {
         <button
           type="button"
           role="tab"
+          aria-selected={mode === "compressVideo"}
+          className={`flex-1 rounded-xl px-4 py-2 text-sm font-medium transition ${
+            mode === "compressVideo"
+              ? "bg-teal-600 text-white shadow-sm"
+              : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
+          }`}
+          onClick={() => {
+            setMode("compressVideo");
+            setJobs([]);
+          }}
+        >
+          Comprimir Video
+        </button>
+        <button
+          type="button"
+          role="tab"
           aria-selected={mode === "youtube"}
           className={`flex-1 rounded-xl px-4 py-2 text-sm font-medium transition ${
             mode === "youtube"
@@ -354,7 +381,9 @@ export function FileConverter() {
         </button>
       </div>
 
-      {mode === "youtube" ? (
+      {mode === "compressVideo" ? (
+        <VideoCompressor />
+      ) : mode === "youtube" ? (
         <YouTubeDownloader />
       ) : (
         <>

@@ -3,6 +3,8 @@ export const ACCEPT_IMAGE_AND_SVG =
 
 export const ACCEPT_PDF = "application/pdf,.pdf" as const;
 
+export const ACCEPT_VIDEO = "video/*" as const;
+
 export const SUPPORTED_IMAGE_INPUT = new Set([
   "image/png",
   "image/jpeg",

@@ -1,0 +1,1953 @@
+⨯ ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+  [90m 8 |[0m [36mimport[0m { [33mVideoPanel[0m } [36mfrom[0m [32m"@/components/VideoCompressor/VideoPanel"[0m;
+  [90m 9 |[0m [36mimport[0m { [33mACCEPT_VIDEO[0m } [36mfrom[0m [32m"@/lib/constants"[0m;
+[31m[1m>[0m [90m10 |[0m [36mimport[0m {
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 |[0m   estimatedSizeBytes,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 |[0m   recommendOutputWidth,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 |[0m   roundToEven,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 |[0m   videoKbpsForQuality,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m15 |[0m   widthToHeight,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 |[0m } [36mfrom[0m [32m"@/lib/video/presets"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m17 |[0m [36mimport[0m [36mtype[0m { [33mVideoProbe[0m, [33mVideoQuality[0m } [36mfrom[0m [32m"@/types/model"[0m;
+  [90m18 |[0m
+  [90m19 |[0m [36mtype[0m [33mCompressedResult[0m = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+
+
+./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+  [90m 8 |[0m [36mimport[0m { [33mVideoPanel[0m } [36mfrom[0m [32m"@/components/VideoCompressor/VideoPanel"[0m;
+  [90m 9 |[0m [36mimport[0m { [33mACCEPT_VIDEO[0m } [36mfrom[0m [32m"@/lib/constants"[0m;
+[31m[1m>[0m [90m10 |[0m [36mimport[0m {
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 |[0m   estimatedSizeBytes,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 |[0m   recommendOutputWidth,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 |[0m   roundToEven,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 |[0m   videoKbpsForQuality,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m15 |[0m   widthToHeight,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 |[0m } [36mfrom[0m [32m"@/lib/video/presets"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m17 |[0m [36mimport[0m [36mtype[0m { [33mVideoProbe[0m, [33mVideoQuality[0m } [36mfrom[0m [32m"@/types/model"[0m;
+  [90m18 |[0m
+  [90m19 |[0m [36mtype[0m [33mCompressedResult[0m = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+⨯ ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+  [90m 8 |[0m [36mimport[0m { [33mVideoPanel[0m } [36mfrom[0m [32m"@/components/VideoCompressor/VideoPanel"[0m;
+  [90m 9 |[0m [36mimport[0m { [33mACCEPT_VIDEO[0m } [36mfrom[0m [32m"@/lib/constants"[0m;
+[31m[1m>[0m [90m10 |[0m [36mimport[0m {
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 |[0m   estimatedSizeBytes,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 |[0m   recommendOutputWidth,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 |[0m   roundToEven,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 |[0m   videoKbpsForQuality,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m15 |[0m   widthToHeight,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 |[0m } [36mfrom[0m [32m"@/lib/video/presets"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m17 |[0m [36mimport[0m [36mtype[0m { [33mVideoProbe[0m, [33mVideoQuality[0m } [36mfrom[0m [32m"@/types/model"[0m;
+  [90m18 |[0m
+  [90m19 |[0m [36mtype[0m [33mCompressedResult[0m = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+
+
+./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+  [90m 8 |[0m [36mimport[0m { [33mVideoPanel[0m } [36mfrom[0m [32m"@/components/VideoCompressor/VideoPanel"[0m;
+  [90m 9 |[0m [36mimport[0m { [33mACCEPT_VIDEO[0m } [36mfrom[0m [32m"@/lib/constants"[0m;
+[31m[1m>[0m [90m10 |[0m [36mimport[0m {
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m11 |[0m   estimatedSizeBytes,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 |[0m   recommendOutputWidth,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 |[0m   roundToEven,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 |[0m   videoKbpsForQuality,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m15 |[0m   widthToHeight,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 |[0m } [36mfrom[0m [32m"@/lib/video/presets"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m17 |[0m [36mimport[0m [36mtype[0m { [33mVideoProbe[0m, [33mVideoQuality[0m } [36mfrom[0m [32m"@/types/model"[0m;
+  [90m18 |[0m
+  [90m19 |[0m [36mtype[0m [33mCompressedResult[0m = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+
+[browser] Uncaught Error: ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+
+    at <unknown> (Error: ./components/VideoCompressor/VideoCompressor.tsx:10:1)
+    at <unknown> (Error: (./components/VideoCompressor/VideoCompressor.tsx:10:1)
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-client] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+[browser] ./components/VideoCompressor/VideoCompressor.tsx:10:1
+Export videoKbpsForQuality doesn't exist in target module
+   8 | import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
+   9 | import { ACCEPT_VIDEO } from "@/lib/constants";
+> 10 | import {
+     | ^^^^^^^
+> 11 |   estimatedSizeBytes,
+     | ^^^^^^^^^^^^^^^^^^^^^
+> 12 |   recommendOutputWidth,
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+> 13 |   roundToEven,
+     | ^^^^^^^^^^^^^^
+> 14 |   videoKbpsForQuality,
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 15 |   widthToHeight,
+     | ^^^^^^^^^^^^^^^^
+> 16 | } from "@/lib/video/presets";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  17 | import type { VideoProbe, VideoQuality } from "@/types/model";
+  18 |
+  19 | type CompressedResult = {
+
+The export videoKbpsForQuality was not found in module [project]/lib/video/presets.ts [app-ssr] (ecmascript).
+Did you mean to import videoKbpsForTarget?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Client Component Browser]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/VideoCompressor/VideoCompressor.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Client Component SSR]
+    ./components/FileConverter/FileConverter.tsx [Server Component]
+    ./app/page.tsx [Server Component] 
+error Command failed with exit code 4294967295.

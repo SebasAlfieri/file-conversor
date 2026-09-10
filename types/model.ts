@@ -1,4 +1,9 @@
-export type AppMode = "convert" | "compress" | "compressPdf" | "youtube";
+export type AppMode =
+  | "convert"
+  | "compress"
+  | "compressPdf"
+  | "compressVideo"
+  | "youtube";
 
 export type ImageMode = "convert" | "compress";
 
@@ -19,3 +24,17 @@ export type FileJob = {
 };
 
 export type YoutubeDownloadFormat = "mp3" | "mp4";
+
+export type VideoQuality = "bajo" | "medio" | "recomendado" | "alto";
+
+export type VideoProbe = {
+  name: string;
+  size: number;
+  duration: number;
+  width: number;
+  height: number;
+  fps: number;
+  bitrateKbps: number;
+  videoCodec: string;
+  audioCodec: string | null;
+};
