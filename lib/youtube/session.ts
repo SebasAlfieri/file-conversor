@@ -22,7 +22,7 @@ export const SESSION_CLIENTS: Array<{
 
 export function createYouTubeSession(session: ClientType) {
   return Innertube.create({
-    cache: new UniversalCache(true),
+    cache: new UniversalCache(false),
     generate_session_locally: true,
     client_type: session,
   });
