@@ -25,6 +25,12 @@ export type FileJob = {
 
 export type YoutubeDownloadFormat = "mp3" | "mp4";
 
+export type YoutubeVideoPreview = {
+  videoId: string;
+  title: string;
+  duration: number | null;
+};
+
 export type VideoQuality = "bajo" | "medio" | "recomendado" | "alto";
 
 export type VideoProbe = {

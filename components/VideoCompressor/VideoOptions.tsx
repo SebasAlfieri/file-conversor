@@ -17,6 +17,8 @@ type VideoOptionsProps = {
   videoKbps: number;
   estimatedBytes: number;
   isCapped: boolean;
+  codecLabel: string;
+  progress: number;
   minSliderWidth: number;
   maxSliderWidth: number;
   busy: boolean;
@@ -40,6 +42,8 @@ export function VideoOptions({
   videoKbps,
   estimatedBytes,
   isCapped,
+  codecLabel,
+  progress,
   minSliderWidth,
   maxSliderWidth,
   busy,
@@ -79,12 +83,12 @@ export function VideoOptions({
                 <dd>{info.fps || "—"}</dd>
               </div>
               <div>
-                <CardLabel>Códec</CardLabel>
+                <CardLabel>Formato</CardLabel>
                 <dd>{info.videoCodec}</dd>
               </div>
               <div>
                 <CardLabel>Audio</CardLabel>
-                <dd>{info.audioCodec ?? "Sin audio"}</dd>
+                <dd>{info.audioCodec ?? "—"}</dd>
               </div>
               <div>
                 <CardLabel>Tamaño</CardLabel>
@@ -176,7 +180,7 @@ export function VideoOptions({
           </div>
           <div>
             <CardLabel>Códec</CardLabel>
-            <dd>H.264 + AAC</dd>
+            <dd>{codecLabel}</dd>
           </div>
           <div>
             <CardLabel>Bitrate video</CardLabel>
@@ -203,12 +207,13 @@ export function VideoOptions({
         </dl>
         <p className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
           Estimación basada en la duración y el bitrate elegidos. El peso real
-          puede variar un poco.
+          depende del navegador; si el resultado sale más pesado, se reintenta
+          automáticamente con menor bitrate.
         </p>
         {isCapped ? (
           <p className="mt-1 text-xs font-medium text-teal-700 dark:text-teal-300">
-            Se limita el bitrate al del original para que el resultado siempre
-            pese menos.
+            Se limita el bitrate al del original para que el resultado tienda a
+            pesar menos.
           </p>
         ) : null}
       </VideoPanel>
@@ -227,7 +232,11 @@ export function VideoOptions({
           className="inline-flex items-center justify-center rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-500 disabled:cursor-not-allowed disabled:opacity-60"
           aria-label="Comprimir el video con las opciones elegidas"
         >
-          {busy ? "Comprimiendo…" : "Comprimir video"}
+          {busy
+            ? progress > 0
+              ? `Comprimiendo… ${progress}%`
+              : "Comprimiendo…"
+            : "Comprimir video"}
         </button>
         <button
           type="button"

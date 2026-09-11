@@ -8,6 +8,13 @@ import { VideoResult } from "@/components/VideoCompressor/VideoResult";
 import { VideoPanel } from "@/components/VideoCompressor/VideoPanel";
 import { ACCEPT_VIDEO } from "@/lib/constants";
 import {
+  compressVideoInBrowser,
+  containerExtension,
+  detectVideoInfo,
+  mimeContainerLabel,
+  pickVideoMimeType,
+} from "@/lib/video/browser";
+import {
   capVideoKbps,
   estimatedSizeBytes,
   recommendOutputWidth,
@@ -24,14 +31,6 @@ type CompressedResult = {
   size: number;
 };
 
-function parseDownloadFilename(header: string | null): string | null {
-  if (!header) return null;
-  const utfFallback = /filename\*=UTF-8''([^;]+)/i.exec(header);
-  if (utfFallback) return decodeURIComponent(utfFallback[1]);
-  const plain = /filename="([^"]+)"/i.exec(header);
-  return plain ? plain[1] : null;
-}
-
 export function VideoCompressor() {
   const [file, setFile] = useState<File | null>(null);
   const [info, setInfo] = useState<VideoProbe | null>(null);
@@ -41,6 +40,7 @@ export function VideoCompressor() {
   const [width, setWidth] = useState(0);
   const [audioBitrateKbps, setAudioBitrateKbps] = useState(128);
   const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<CompressedResult | null>(null);
   const urlRef = useRef<string | null>(null);
 
@@ -64,6 +64,7 @@ export function VideoCompressor() {
     setInfo(null);
     setError(null);
     setBusy(false);
+    setProgress(0);
     setWidth(0);
     setQuality("recomendado");
     setAudioBitrateKbps(128);
@@ -79,17 +80,7 @@ export function VideoCompressor() {
       setProbing(true);
       setError(null);
       try {
-        const form = new FormData();
-        form.append("file", next);
-        const res = await fetch("/api/video/probe", {
-          method: "POST",
-          body: form,
-        });
-        if (!res.ok) {
-          const payload = await res.json().catch(() => null);
-          throw new Error(payload?.error ?? `Error ${res.status}`);
-        }
-        const data = (await res.json()) as VideoProbe;
+        const data = await detectVideoInfo(next);
         setInfo(data);
         setWidth(recommendOutputWidth(data.width, data.height));
       } catch (err) {
@@ -120,41 +111,45 @@ export function VideoCompressor() {
       ? estimatedSizeBytes(videoKbps, audioBitrateKbps, info.duration)
       : 0;
   const maxSliderWidth = info ? Math.max(160, roundToEven(info.width)) : 160;
+  const mimeType = pickVideoMimeType();
+  const codecLabel = mimeContainerLabel(mimeType);
 
   const handleCompress = useCallback(async () => {
     if (!file || !info || busy || height <= 0) return;
+    if (!mimeType) {
+      setError("Tu navegador no soporta la compresión de video");
+      return;
+    }
     setBusy(true);
     setError(null);
-    const form = new FormData();
-    form.append("file", file);
-    form.append("width", String(width));
-    form.append("videoBitrateKbps", String(videoKbps));
-    form.append("audioBitrateKbps", String(audioBitrateKbps));
-    form.append("hasAudio", info.audioCodec ? "1" : "0");
-    form.append("durationSeconds", String(info.duration));
+    let attemptKbps = videoKbps;
+    let blob: Blob | null = null;
     try {
-      const res = await fetch("/api/video/compress", {
-        method: "POST",
-        body: form,
-      });
-      if (!res.ok) {
-        const payload = await res.json().catch(() => null);
-        throw new Error(payload?.error ?? `Error ${res.status}`);
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        setProgress(0);
+        blob = await compressVideoInBrowser(file, {
+          width,
+          height,
+          videoKbps: attemptKbps,
+          audioKbps: audioBitrateKbps,
+          fps: info.fps,
+          onProgress: setProgress,
+        });
+        if (blob.size < file.size || attempt === 1) break;
+        attemptKbps = Math.max(96, Math.round(attemptKbps * 0.65));
       }
-      const blob = await res.blob();
-      const name =
-        parseDownloadFilename(res.headers.get("Content-Disposition")) ??
-        "video-comprimido.mp4";
+      if (!blob) return;
+      const baseName = file.name.replace(/\.[^.]+$/, "");
+      const name = `Comprimido-${baseName}-${width}x${height}.${containerExtension(mimeType)}`;
       if (urlRef.current) revokeUrl(urlRef.current);
       const url = URL.createObjectURL(blob);
       urlRef.current = url;
       setResult({ url, name, size: blob.size });
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "La compresión falló",
-      );
+      setError(err instanceof Error ? err.message : "La compresión falló");
     } finally {
       setBusy(false);
+      setProgress(0);
     }
   }, [
     audioBitrateKbps,
@@ -162,6 +157,7 @@ export function VideoCompressor() {
     file,
     height,
     info,
+    mimeType,
     revokeUrl,
     videoKbps,
     width,
@@ -175,7 +171,7 @@ export function VideoCompressor() {
           disabled={busy}
           accept={ACCEPT_VIDEO}
           title="Arrastra un video aquí"
-          description="o toca para elegirlo en tu explorador; detectamos sus propiedades al subirlo"
+          description="o toca para elegirlo en tu explorador; se analiza y comprime localmente, sin subirlo a ningún servidor"
         />
       ) : probing ? (
         <VideoPanel>
@@ -183,7 +179,7 @@ export function VideoCompressor() {
             Analizando video…
           </p>
           <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-            Detectando resolución, duración y propiedades.
+            Detectando resolución, duración y fps con el navegador.
           </p>
         </VideoPanel>
       ) : info ? (
@@ -203,6 +199,8 @@ export function VideoCompressor() {
             videoKbps={videoKbps}
             estimatedBytes={estimatedBytes}
             isCapped={isCapped}
+            codecLabel={codecLabel}
+            progress={progress}
             minSliderWidth={160}
             maxSliderWidth={maxSliderWidth}
             busy={busy}

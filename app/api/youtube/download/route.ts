@@ -9,33 +9,19 @@ import { pipeline } from "node:stream/promises";
 import ffmpeg from "fluent-ffmpeg";
 import ffmpegPath from "ffmpeg-static";
 import type { NextRequest } from "next/server";
-import {
-  ClientType,
-  Innertube,
-  Platform,
-  UniversalCache,
-  type Types,
-} from "youtubei.js";
 
 import { attachmentContentDisposition } from "@/lib/youtube/contentDisposition";
 import { extractYoutubeVideoId } from "@/lib/youtube/extractYoutubeVideoId";
 import { sanitizeYoutubeFilename } from "@/lib/youtube/sanitizeFilename";
+import {
+  createYouTubeSession,
+  SESSION_CLIENTS,
+  titleFromBasicInfo,
+} from "@/lib/youtube/session";
 
 export const runtime = "nodejs";
 
-export const maxDuration = 600;
-
-Platform.shim.eval = async (data) => {
-  return new Function(data.output)();
-};
-
-const SESSION_CLIENTS: Array<{
-  session: ClientType;
-  client: Types.InnerTubeClient;
-}> = [
-  { session: ClientType.IOS, client: "IOS" },
-  { session: ClientType.VISIONOS, client: "VISIONOS" },
-];
+export const maxDuration = 300;
 
 type Body = {
   url?: string;
@@ -44,14 +30,6 @@ type Body = {
 
 function jsonError(message: string, status: number) {
   return Response.json({ error: message }, { status });
-}
-
-function titleFromBasicInfo(info: {
-  basic_info?: { title?: string | { toString: () => string } };
-}): string {
-  const t = info.basic_info?.title;
-  if (t == null) return "video";
-  return typeof t === "string" ? t : t.toString();
 }
 
 function requireFfmpeg(ffmpegPathValue: string | null) {
@@ -97,11 +75,7 @@ export async function POST(req: NextRequest) {
 
   for (const { session, client } of SESSION_CLIENTS) {
     try {
-      const yt = await Innertube.create({
-        cache: new UniversalCache(true),
-        generate_session_locally: true,
-        client_type: session,
-      });
+      const yt = await createYouTubeSession(session);
 
       const basic = await yt.getBasicInfo(videoId, { client });
       const title = sanitizeYoutubeFilename(titleFromBasicInfo(basic));
@@ -210,7 +184,7 @@ export async function POST(req: NextRequest) {
     lastError instanceof Error ? lastError.message : String(lastError);
 
   return jsonError(
-    `No se pudo leer el video (${detail.slice(0, 200)}). Si sigue fallando, YouTube puede estar pidiendo verificación: prueba otro enlace, otra red o más tarde.`,
+    `No se pudo leer el video sin iniciar sesión (${detail.slice(0, 200)}). YouTube cambia sus controles seguido: prueba otro enlace, otra red o más tarde.`,
     502,
   );
 }

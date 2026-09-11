@@ -260,9 +260,7 @@ export function FileConverter() {
         <p className="text-sm font-medium uppercase tracking-widest text-teal-600 dark:text-teal-300">
           {mode === "youtube"
             ? "YouTube · Proceso en servidor"
-            : mode === "compressVideo"
-              ? "Gratis · Proceso en servidor"
-              : "Gratis · En tu navegador"}
+            : "Gratis · En tu navegador"}
         </p>
         <h1 className="text-balance text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
           {mode === "youtube"
@@ -279,9 +277,10 @@ export function FileConverter() {
             </>
           ) : mode === "compressVideo" ? (
             <>
-              Sube tu video y detectamos resolución y propiedades: elige
-              calidad y el ancho horizontal —manteniendo siempre la proporción—
-              y mira cuánto pesará antes de comprimir.
+              Sube tu video y detectamos resolución y propiedades: elige calidad y el ancho
+              horizontal —manteniendo siempre la proporción— y mira cuánto pesará
+              antes de comprimir. Todo ocurre en tu dispositivo, sin subir el
+              video a ningún servidor.
             </>
           ) : (
             <>

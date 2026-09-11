@@ -1,17 +1,71 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { filenameFromContentDisposition } from "@/lib/download/filenameFromContentDisposition";
 import { triggerDownload } from "@/lib/download/triggerDownload";
-import type { YoutubeDownloadFormat } from "@/types/model";
+import { formatDuration } from "@/lib/video/format";
+import { extractYoutubeVideoId } from "@/lib/youtube/extractYoutubeVideoId";
+import type { YoutubeDownloadFormat, YoutubeVideoPreview } from "@/types/model";
 
 export function YouTubeDownloader() {
   const [url, setUrl] = useState("");
   const [format, setFormat] = useState<YoutubeDownloadFormat>("mp4");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [preview, setPreview] = useState<YoutubeVideoPreview | null>(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
+  const [previewError, setPreviewError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const videoId = extractYoutubeVideoId(url);
+    if (!videoId) return;
+
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => {
+      setPreviewLoading(true);
+      setPreviewError(null);
+      fetch("/api/youtube/info", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+        signal: controller.signal,
+      })
+        .then(async (res) => {
+          if (!res.ok) {
+            const data = (await res.json().catch(() => null)) as {
+              error?: string;
+            } | null;
+            throw new Error(data?.error ?? `Error ${res.status}`);
+          }
+          return (await res.json()) as YoutubeVideoPreview;
+        })
+        .then(setPreview)
+        .catch((err: unknown) => {
+          const name = (err as { name?: string } | null)?.name;
+          if (name === "AbortError") return;
+          setPreview(null);
+          setPreviewError("No se pudo cargar la vista previa.");
+        })
+        .finally(() => setPreviewLoading(false));
+    }, 600);
+
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, [url]);
+
+  const currentVideoId = extractYoutubeVideoId(url);
+  const showPreview = preview !== null && preview.videoId === currentVideoId;
+  const showLoading = previewLoading && currentVideoId !== null;
+  const showPreviewError =
+    previewError !== null &&
+    currentVideoId !== null &&
+    !showPreview &&
+    !showLoading;
 
   const download = useCallback(async () => {
     const trimmed = url.trim();
@@ -74,6 +128,44 @@ export function YouTubeDownloader() {
           spellCheck={false}
         />
       </label>
+
+      {showPreview || showLoading ? (
+        <motion.div
+          layout
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-3 rounded-xl border border-zinc-200 bg-white p-2 dark:border-zinc-800 dark:bg-zinc-900/60"
+        >
+          {showPreview ? (
+            <Image
+              src={`https://i.ytimg.com/vi/${preview.videoId}/mqdefault.jpg`}
+              alt="Miniatura del video"
+              width={128}
+              height={72}
+              className="h-14 w-24 shrink-0 rounded-lg object-cover"
+            />
+          ) : (
+            <div className="h-14 w-24 shrink-0 animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-800" />
+          )}
+          <div className="min-w-0 flex-1">
+            <p
+              className="truncate text-sm font-medium text-zinc-800 dark:text-zinc-100"
+              title={preview?.title}
+            >
+              {showPreview
+                ? preview.title
+                : "Cargando vista previa…"}
+            </p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">
+              {showPreview ? formatDuration(preview.duration ?? 0) : "Duración"}
+            </p>
+          </div>
+        </motion.div>
+      ) : showPreviewError ? (
+        <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+          {previewError}
+        </p>
+      ) : null}
 
       <fieldset className="space-y-2">
         <legend className="text-sm font-medium text-zinc-800 dark:text-zinc-100">
