@@ -14,10 +14,12 @@ export const SESSION_CLIENTS: Array<{
   session: ClientType;
   client: Types.InnerTubeClient;
 }> = [
+  { session: ClientType.TV_EMBEDDED, client: "TV_EMBEDDED" },
   { session: ClientType.IOS, client: "IOS" },
-  { session: ClientType.VISIONOS, client: "VISIONOS" },
+  { session: ClientType.WEB_EMBEDDED, client: "WEB_EMBEDDED" },
   { session: ClientType.ANDROID, client: "ANDROID" },
   { session: ClientType.TV, client: "TV" },
+  { session: ClientType.VISIONOS, client: "VISIONOS" },
 ];
 
 export function createYouTubeSession(session: ClientType) {
